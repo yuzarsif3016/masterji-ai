@@ -2,93 +2,68 @@
 
 > **An AI-powered programming mentor that simulates conversations inspired by the publicly observable teaching styles of Hitesh Choudhary and Piyush Garg.**
 
-MasterJi AI is an LLM-powered chatbot that allows users to learn programming from two distinct AI mentors. Each persona follows a different teaching philosophy while maintaining context-aware conversations and high-quality technical explanations.
+MasterJi AI is an LLM-powered chatbot that demonstrates how prompt engineering can be used to create distinct educational personas. Users can switch between two AI mentors, each following a different teaching philosophy while maintaining context-aware conversations.
 
-> **Disclaimer:** This project is an educational demonstration. The chatbot does **not** claim to be the real Hitesh Choudhary or Piyush Garg. It is an AI assistant inspired by their publicly observable educational styles.
-
----
-
-# 📖 Table of Contents
-
-* Project Overview
-* Features
-* Demo
-* Tech Stack
-* Architecture
-* Folder Structure
-* Prompt Engineering Strategy
-* Persona Research
-* Context Management
-* Installation
-* Environment Variables
-* Running the Project
-* Screenshots
-* Evaluation Mapping
-* Future Improvements
-* License
+> **Disclaimer:** This project is an educational demonstration built for the GenAI Cohort Assignment. The chatbot does **not** claim to be or impersonate Hitesh Choudhary or Piyush Garg. It is an AI assistant inspired by their publicly observable educational styles.
 
 ---
 
-# 🚀 Project Overview
+# 🌐 Live Links
 
-The objective of this project is to demonstrate how prompt engineering and LLMs can be used to simulate different educational teaching styles.
+**🚀 Live Application**
 
-The chatbot supports two mentor personas:
+https://masterji-ai.vercel.app/
 
-### 🎯 Hitesh-Inspired Mentor
+**📂 GitHub Repository**
+
+https://github.com/yuzarsif3016/masterji-ai.git
+
+---
+
+# 📖 Project Overview
+
+MasterJi AI demonstrates how Large Language Models (LLMs) can simulate different educational teaching styles using prompt engineering.
+
+Instead of simply answering questions, the chatbot behaves like a programming mentor and adapts its responses based on the selected persona.
+
+The project supports two mentor personas:
+
+## 🎯 Hitesh-Inspired Mentor
 
 * Friendly and approachable
-* Project-based learning
-* Beginner focused
 * Concept-first explanations
-* Encouraging tone
+* Project-based learning
+* Encouraging and beginner-friendly
+* Focuses on learning through practice
 
 ---
 
-### 🎯 Piyush-Inspired Mentor
+## 🎯 Piyush-Inspired Mentor
 
-* Engineering mindset
-* Architecture-first explanations
-* Backend-oriented
-* Production-focused
+* Engineering-first mindset
+* Architecture-oriented explanations
+* Production-focused discussions
 * Structured communication
+* Emphasizes software engineering principles
 
-Users can switch between personas at any time while maintaining separate conversation context.
+Users can switch between personas at any time while maintaining conversation context.
 
 ---
 
 # ✨ Features
 
-* 🤖 OpenAI GPT-4.1 Integration
+* 🤖 OpenAI GPT Integration
 * 🎭 Dual AI Personas
 * 🔄 Persona Switching
 * 💬 Context-Aware Conversations
-* 🧠 Conversation Memory
+* 🧠 Session-Based Memory
 * 📝 Markdown Rendering
 * 💻 Syntax Highlighting
 * 📋 Copy Code Button
-* ⚡ Express Backend
-* 🎨 Responsive Chat UI
+* ⚡ Express.js Backend
+* 🎨 Responsive Chat Interface
 * 📚 Modular Prompt Engineering
 * 🧩 Clean Project Architecture
-
----
-
-# 🎥 Demo
-
-## Live Application
-
-Frontend:
-
-```text
-(Add your Vercel URL here)
-```
-
-Backend API:
-
-```text
-(Add your Render URL here)
-```
 
 ---
 
@@ -98,7 +73,7 @@ Backend API:
 
 * HTML5
 * CSS3
-* JavaScript (Vanilla)
+* Vanilla JavaScript
 * Marked.js
 * Highlight.js
 
@@ -109,18 +84,18 @@ Backend API:
 * Node.js
 * Express.js
 * OpenAI SDK
-* CORS
 * dotenv
+* CORS
 
 ---
 
-## AI
+## AI Model
 
-* OpenAI GPT-4.1
+* OpenAI GPT
 
 ---
 
-# 🏗 Architecture
+# 🏗 System Architecture
 
 ```text
                         User
@@ -143,154 +118,146 @@ Backend API:
  Persona Research
           │
           ▼
-      OpenAI GPT-4.1
+      OpenAI GPT
           │
           ▼
       AI Response
 ```
 
+The frontend communicates with an Express backend through a REST API.
+
+Before every request, the backend dynamically constructs the final system prompt by combining:
+
+* Common Prompt
+* Persona Prompt
+* Persona Research
+* Conversation History
+
+This prompt is then sent to the OpenAI API, enabling context-aware conversations while preserving the selected mentor's teaching style.
+
 ---
 
-# 📂 Folder Structure
+# 📂 Project Structure
 
 ```text
 masterji-ai/
 
-│
-
 ├── client/
-
 │   ├── index.html
-
 │   ├── style.css
-
-│   ├── app.js
-
+│   └── app.js
 │
-
 ├── server/
-
 │   ├── controllers/
-
-│   ├── prompts/
-
-│   ├── research/
-
 │   ├── routes/
-
 │   ├── services/
-
+│   ├── prompts/
+│   ├── research/
 │   ├── utils/
-
-│   ├── server.js
-
+│   ├── docs/
+│   ├── package.json
+│   └── server.js
 │
-
-├── docs/
-
-│   ├── persona-research.md
-
-│   ├── prompt-engineering.md
-
-│   ├── context-management.md
-
-│   ├── sample-conversations.md
-
-│
-
 ├── README.md
-
-└── .env
+└── .gitignore
 ```
 
 ---
 
 # 🧠 Prompt Engineering Strategy
 
-Instead of relying on a single prompt, the project dynamically constructs the final prompt using multiple components.
+The project uses a modular prompt engineering architecture rather than relying on one large prompt.
+
+The final prompt is dynamically generated using:
 
 ```text
 Common Prompt
-
-+
-
+        +
 Persona Prompt
-
-+
-
+        +
 Persona Research
-
-+
-
+        +
 Conversation History
-
-↓
-
+        +
+Current User Question
+        =
 Final Prompt
 ```
 
-Benefits:
+This approach provides:
 
-* Cleaner architecture
 * Better maintainability
-* Easier addition of future personas
-* Improved consistency
+* Cleaner architecture
+* Improved persona consistency
+* Easy addition of future personas
 
-For more details, see:
+Detailed documentation is available in:
 
-```text
-docs/prompt-engineering.md
-```
+* `server/docs/prompt-engineering.md`
 
 ---
 
 # 📚 Persona Research
 
-Personas were created by studying publicly available educational material.
-
-Sources included:
+The personas were created by studying publicly available educational material such as:
 
 * Official websites
 * Public YouTube videos
-* Public blogs
-* Public talks
+* Technical talks
+* Blogs
 * Public GitHub repositories
-* Public course descriptions
+* Course descriptions
 
 The implementation focuses on teaching philosophy and communication style rather than copying transcripts or distinctive wording.
+
+Detailed research documentation is available in:
+
+* `server/docs/persona-research.md`
 
 ---
 
 # 💬 Context Management
 
-Conversation history is maintained using a unique session ID.
+Each conversation is associated with a unique session ID.
 
-Each request contains:
+The backend stores conversation history and sends previous messages along with the current user prompt to the LLM.
 
-* Current user message
-* Conversation history
-* Persona selection
-* Generated system prompt
+This enables:
 
-This enables natural follow-up conversations.
+* Context-aware conversations
+* Natural follow-up questions
+* Reduced repetition
+* Consistent persona behavior
+
+Documentation:
+
+* `server/docs/context-management.md`
+
+---
+
+# 📄 Sample Conversations
+
+Example conversations demonstrating the behavioral differences between both personas are available in:
+
+* `server/docs/sample-conversations.md`
 
 ---
 
 # ⚙ Installation
 
-Clone the repository.
+Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/yuzarsif3016/masterji-ai.git
 ```
 
-Go to the project.
+Navigate to the backend:
 
 ```bash
-cd masterji-ai
+cd masterji-ai/server
 ```
 
-Install backend dependencies.
+Install dependencies:
 
 ```bash
 npm install
@@ -303,7 +270,7 @@ npm install
 Create a `.env` file inside the `server` directory.
 
 ```env
-OPENAI_API_KEY=your_api_key
+OPENAI_API_KEY=your_openai_api_key
 PORT=3000
 ```
 
@@ -311,76 +278,55 @@ PORT=3000
 
 # ▶ Running the Project
 
-Start the backend.
+Start the backend server:
 
 ```bash
 npm run dev
 ```
 
-Open the frontend.
-
-```
-client/index.html
-```
-
-Or serve it using your preferred local server.
+Open the frontend by serving the `client` directory using your preferred local server.
 
 ---
 
-# 📸 Screenshots
+# 📊 Assignment Requirement Mapping
 
-Add screenshots after deployment.
-
-Suggested screenshots:
-
-* Home Screen
-* Persona Switching
-* Hitesh Conversation
-* Piyush Conversation
-* Code Highlighting
-* Mobile View
-
----
-
-# 📊 Evaluation Mapping
-
-| Requirement          | Status               |
-| -------------------- | -------------------- |
-| AI Website           | ✅                    |
-| LLM Integration      | ✅                    |
-| Persona Switching    | ✅                    |
-| Hitesh Persona       | ✅                    |
-| Piyush Persona       | ✅                    |
-| Context Management   | ✅                    |
-| Documentation        | ✅                    |
-| Sample Conversations | ✅                    |
-| GitHub Repository    | ✅                    |
-| Live Deployment      | ✅ (After deployment) |
+| Assignment Requirement   | Implementation                                                          |
+| ------------------------ | ----------------------------------------------------------------------- |
+| AI-powered Website       | ✅ OpenAI GPT Integration                                                |
+| LLM-Based Chat Interface | ✅ Express + OpenAI SDK                                                  |
+| Hitesh Persona           | ✅ Prompt-based AI mentor inspired by publicly observable teaching style |
+| Piyush Persona           | ✅ Prompt-based AI mentor inspired by publicly observable teaching style |
+| Persona Switching        | ✅ Dynamic persona selection                                             |
+| Context Management       | ✅ Session-based conversation memory                                     |
+| Prompt Engineering       | ✅ Modular prompt builder architecture                                   |
+| Documentation            | ✅ Included in `server/docs`                                             |
+| Public GitHub Repository | ✅ Completed                                                             |
+| Live Deployment          | ✅ Vercel (Frontend) + Render (Backend)                                  |
 
 ---
 
 # 🔮 Future Improvements
 
-* Redis-based conversation memory
-* Authentication
-* Persistent chat history
-* Voice conversations
-* Streaming responses
+* Redis-based persistent conversation memory
+* User authentication
+* Chat history persistence
+* Streaming AI responses
+* Voice interaction
 * Image understanding
+* Retrieval-Augmented Generation (RAG)
 * Additional mentor personas
-* RAG with personal notes
-* Dark/Light theme switch
+* Theme customization
 * Mobile application
 
 ---
 
-# 📜 License
+# 🙏 Acknowledgements
 
-This project was created for educational purposes as part of the **GenAI Cohort Assignment**.
+This project was built as part of the **GenAI Cohort Assignment**.
 
-It is intended to demonstrate prompt engineering, LLM integration, persona design, and conversational AI techniques.
+Special thanks to the creators whose publicly available educational content inspired the teaching styles used in this project.
 
-The chatbot is inspired by publicly observable educational styles and does not represent or impersonate any individual.
+This implementation is intended solely for educational purposes and does not represent, impersonate, or claim endorsement from Hitesh Choudhary or Piyush Garg.
 
 ---
 
@@ -388,4 +334,4 @@ The chatbot is inspired by publicly observable educational styles and does not r
 
 **Yusuf Pathan**
 
-Built with ❤️ using Node.js, Express.js and OpenAI GPT-4.1.
+Built with ❤️ using Node.js, Express.js, OpenAI, and modern prompt engineering techniques.
