@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MasterJi AI</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Highlight.js Theme -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ======================================
+                    HEADER
+        ======================================= -->
+
+        <header>
+
+            <h1>🤖 MasterJi AI</h1>
+
+            <p>
+                Learn Programming from AI Personas inspired by
+                India's Best Coding Mentors
+            </p>
+
+        </header>
+
+        <!-- ======================================
+                PERSONA SELECTOR
+        ======================================= -->
+
+        <section class="persona-container">
+
+            <!-- Hitesh -->
+
+            <div class="persona-card active" data-persona="hitesh">
+
+                <img src="assets/hitesh.jpg" alt="Hitesh Choudhary">
+
+                <h3>Hitesh Choudhary</h3>
+
+                <p class="role">⭐ Friendly Mentor</p>
+
+                <small>Hindi + English</small>
+
+                <small>Project Based Learning</small>
+
+            </div>
+
+            <!-- Piyush -->
+
+            <div class="persona-card" data-persona="piyush">
+
+                <img src="assets/piyush.jpg" alt="Piyush Garg">
+
+                <h3>Piyush Garg</h3>
+
+                <p class="role">⭐ Backend Expert</p>
+
+                <small>Production Mindset</small>
+
+                <small>System Design</small>
+
+            </div>
+
+        </section>
+
+        <!-- ======================================
+                    CHAT AREA
+        ======================================= -->
+
+        <main id="chat-box">
+
+            <div class="message ai">
+
+                <div class="bubble">
+
+                    👋 <strong>Welcome to MasterJi AI</strong>
+
+                    <br><br>
+
+                    Choose your mentor above and ask anything about
+
+                    <ul>
+                        <li>Java</li>
+                        <li>Spring Boot</li>
+                        <li>JavaScript</li>
+                        <li>React</li>
+                        <li>Node.js</li>
+                        <li>System Design</li>
+                        <li>AI</li>
+                        <li>DSA</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </main>
+
+        <!-- ======================================
+                    INPUT
+        ======================================= -->
+
+        <footer>
+
+            <textarea
+                id="user-input"
+                rows="2"
+                placeholder="Ask your programming question..."></textarea>
+
+            <button id="send-btn">
+
+                🚀 Send
+
+            </button>
+
+        </footer>
+
+    </div>
+
+    <!-- ======================================
+            MARKDOWN PARSER
+    ======================================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- ======================================
+            CODE HIGHLIGHTER
+    ======================================= -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+    <!-- ======================================
+            APP
+    ======================================= -->
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
